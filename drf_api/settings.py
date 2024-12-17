@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'posts',
+    'comments',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net'
 ]
 
 ROOT_URLCONF = 'drf_api.urls'
