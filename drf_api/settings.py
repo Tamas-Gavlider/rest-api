@@ -65,6 +65,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     '8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net',
+    
 ]
 
 CORS_ALLOW_HEADERS = [
