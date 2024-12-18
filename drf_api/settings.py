@@ -64,7 +64,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True 
 # 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net', os.getenv('ALLOWED_HOST')]
+ALLOWED_HOSTS = ['8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net', os.environ.get('ALLOWED_HOST')]
 
 
 # Application definition
