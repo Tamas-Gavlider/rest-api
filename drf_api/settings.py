@@ -113,6 +113,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://3000-tamasgavlider-moments-l75e8zph08i.ws.codeinstitute-ide.net",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://3000-tamasgavlider-moments-l75e8zph08i.ws.codeinstitute-ide.net",
+]
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
