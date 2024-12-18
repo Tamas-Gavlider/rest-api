@@ -63,7 +63,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net', os.getenv('ALLOWED_HOST')]
+ALLOWED_HOSTS = ['8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net', os.environ.get('ALLOWED_HOST')]
 
 
 # Application definition
@@ -114,10 +114,10 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 """
 
-if 'CLIENT_ORIGIN' in os.environ:
-     CORS_ALLOWED_ORIGINS = [
-         os.environ.get('CLIENT_ORIGIN')
-     ]
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+         r"^https:\/\/.*\.codeinstitute-ide\.net$",
+    ]
 else:
      CORS_ALLOWED_ORIGIN_REGEXES = [
          r"^https:\/\/.*\.codeinstitute-ide\.net$",
