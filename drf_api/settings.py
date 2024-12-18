@@ -66,8 +66,9 @@ ALLOWED_HOSTS = [
     '8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net',
 ]
 
-CORS_ALLOW_HEADERS = [
-    'content-type', 'Authorization',
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Authorization',
+    'Access-Control-Allow-Origin',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -75,13 +76,20 @@ if 'CLIENT_ORIGIN' in os.environ:
         os.environ.get('CLIENT_ORIGIN')
     ]
 
+# Handle CORS for development (Gitpod)
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
-    ).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
+    extracted_url = os.environ.get('CLIENT_ORIGIN_DEV', '')
+    match = re.match(r'^.+-', extracted_url, re.IGNORECASE)
+    if match:
+        extracted_url = match.group(0)  # Extracted part of the URL
+        CORS_ALLOWED_ORIGIN_REGEXES = [
+            rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+        ]
+    else:
+        # Fallback if the regex doesn't match
+        CORS_ALLOWED_ORIGIN_REGEXES = [
+            "https://default-origin.gitpod.io",  # Default value or logging can be done here
+        ]
 
 CORS_ALLOW_CREDENTIALS = True
 
