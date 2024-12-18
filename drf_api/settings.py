@@ -109,11 +109,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-"""
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net'
+CORS_ALLOWED_ORIGINS = [
+    "https://3000-tamasgavlider-moments-l75e8zph08i.ws.codeinstitute-ide.net",
 ]
-"""
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     CORS_ALLOWED_ORIGIN_REGEXES = [
