@@ -63,7 +63,11 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    'localhost',
+    '8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net',
+]
+
+CORS_ALLOW_HEADERS = [
+    'content-type', 'Authorization',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
