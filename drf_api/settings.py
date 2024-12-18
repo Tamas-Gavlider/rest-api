@@ -116,7 +116,7 @@ else:
          r"^https:\/\/.*\.codeinstitute-ide\.net$",
      ]
      
- CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'drf_api.urls'
 
