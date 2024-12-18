@@ -59,7 +59,8 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEV' in os.environ
+DEBUG = False 
+# 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
@@ -94,7 +95,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN'),os.environ.get('CLIENT_ORIGIN_DEV')
+    os.environ.get('CLIENT_ORIGIN'),os.environ.get('CLIENT_ORIGIN_DEV'), 'https://8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net/','https://drf-api-react-4996193a1e99.herokuapp.com/'
 ]
 
 # Application definition
@@ -138,6 +139,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'drf_api.urls'
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.AuthenticationBackend',  
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 TEMPLATES = [
     {
