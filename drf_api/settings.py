@@ -56,47 +56,15 @@ REST_AUTH_SERIALIZERS = {
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
-# 'DEV' in os.environ
+DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     '8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net',
     
-]
-
-CORS_ALLOW_HEADERS = [
-    'Authorization',
-    'Access-Control-Allow-Origin',
-]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-
-# Handle CORS for development (Gitpod)
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = os.environ.get('CLIENT_ORIGIN_DEV', '')
-    match = re.match(r'^.+-', extracted_url, re.IGNORECASE)
-    if match:
-        extracted_url = match.group(0)  # Extracted part of the URL
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-        ]
-    else:
-        # Fallback if the regex doesn't match
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            "https://default-origin.gitpod.io",  # Default value or logging can be done here
-        ]
-
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN'),os.environ.get('CLIENT_ORIGIN_DEV'), 'https://8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net/','https://drf-api-react-4996193a1e99.herokuapp.com/'
 ]
 
 # Application definition
@@ -139,12 +107,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'drf_api.urls'
+if 'CLIENT_ORIGIN' in os.environ:
+     CORS_ALLOWED_ORIGINS = [
+         os.environ.get('CLIENT_ORIGIN')
+     ]
+else:
+     CORS_ALLOWED_ORIGIN_REGEXES = [
+         r"^https:\/\/.*\.codeinstitute-ide\.net$",
+     ]
+     
+ CORS_ALLOW_CREDENTIALS = True
 
-AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth_backends.AuthenticationBackend',  
-    'django.contrib.auth.backends.ModelBackend',
-)
+ROOT_URLCONF = 'drf_api.urls'
 
 TEMPLATES = [
     {
