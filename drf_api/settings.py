@@ -111,14 +111,14 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://drf-api-react-4996193a1e99.herokuapp.com", 
-    "https://3000-tamasgavlider-moments-l75e8zph08i.ws.codeinstitute-ide.net",
+    "https://moments-pp5-4e7d3f875a72.herokuapp.com",
+    "http://localhost:3000", 
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-     "https://drf-api-react-4996193a1e99.herokuapp.com",
-    "https://8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net",
+    "https://moments-pp5-4e7d3f875a72.herokuapp.com",
+    "https://drf-api-react-4996193a1e99.herokuapp.com", 
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
