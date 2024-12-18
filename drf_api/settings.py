@@ -66,7 +66,7 @@ ALLOWED_HOSTS = [
     '8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net',
 ]
 
-CORS_ALLOW_HEADERS = list(default_headers) + [
+CORS_ALLOW_HEADERS = [
     'Authorization',
     'Access-Control-Allow-Origin',
 ]
@@ -92,6 +92,10 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
         ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    os.environ.get('CLIENT_ORIGIN'),os.environ.get('CLIENT_ORIGIN_DEV')
+]
 
 # Application definition
 
