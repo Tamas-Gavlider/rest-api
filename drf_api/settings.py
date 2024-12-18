@@ -121,7 +121,6 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
     ]
 else:
      CORS_ALLOWED_ORIGIN_REGEXES = [
-         os.getenv('CLIENT_ORIGIN'),
          r"^https:\/\/.*\.codeinstitute-ide\.net$",
      ]
      
