@@ -114,8 +114,9 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.codeinstitute-ide\.net$"
 ]
 
-
-     
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-tamasgavlider-restapi-sp7zn655y4z.ws.codeinstitute-ide.net'
+]
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'drf_api.urls'
